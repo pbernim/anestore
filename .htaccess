@@ -1,0 +1,15 @@
+# https://httpd.apache.org/docs/current/howto/htaccess.html
+
+RedirectMatch 301 /es/ /es
+RedirectMatch 301 /ca/ /ca
+RedirectMatch 301 /en/ /en
+
+Options +FollowSymlinks
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+RewriteRule ^(.*)$ index.php?p=$1 [L]
+# RewriteRule ^(.*)/(.*)$ index.php?p=$1&a=$2 [L]
